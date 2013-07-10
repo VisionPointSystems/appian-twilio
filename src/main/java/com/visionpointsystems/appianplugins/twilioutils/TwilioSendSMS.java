@@ -4,7 +4,6 @@ package com.visionpointsystems.appianplugins.twilioutils;
 	import com.twilio.sdk.TwilioRestException;
 	import com.twilio.sdk.resource.factory.SmsFactory;
 	import com.twilio.sdk.resource.instance.Sms;
-	import com.twilio.sdk.resource.list.SmsList;
 	import java.util.HashMap;
 	import java.util.Map;
 	  

@@ -2,12 +2,12 @@
 
   <plugin-info>
     <description>Twilio Utilities</description>
-    <vendor name="Appian Corporation" url="http://www.appian.com" />
+    <vendor name="Vision Point Systems" url="http://ses.visionpointsystems.com" />
     <version>1.0.0</version>
     <application-version min="6.1.0" />
   </plugin-info>
 
 
-  <smart-service name="Send SMS " key="SendSMS"
+  <smart-service name="Send SMS via Twilio" key="SendSMS"
     class="com.visionpointsystems.appianplugins.twilioutils.SendSMS" />
 </appian-plugin>

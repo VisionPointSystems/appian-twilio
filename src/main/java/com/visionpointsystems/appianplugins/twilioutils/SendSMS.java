@@ -9,11 +9,13 @@ import com.appiancorp.suiteapi.process.framework.Input;
 import com.appiancorp.suiteapi.process.framework.MessageContainer;
 import com.appiancorp.suiteapi.process.framework.Required;
 import com.appiancorp.suiteapi.process.framework.SmartServiceContext;
+import com.appiancorp.suiteapi.process.framework.Unattended;
 
 import com.appiancorp.suiteapi.process.palette.PaletteInfo; 
 import com.twilio.sdk.TwilioRestException;
 
 @PaletteInfo(paletteCategory = "Integration Services", palette = "Connectivity Services") 
+@Unattended
 public class SendSMS extends AppianSmartService {
 
 	private static final Logger LOG = Logger.getLogger(SendSMS.class);

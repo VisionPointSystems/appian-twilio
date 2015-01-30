@@ -3,7 +3,7 @@
   <plugin-info>
     <description>Twilio Utilities</description>
     <vendor name="Vision Point Systems" url="http://ses.visionpointsystems.com" />
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <application-version min="6.1.0" />
   </plugin-info>
 

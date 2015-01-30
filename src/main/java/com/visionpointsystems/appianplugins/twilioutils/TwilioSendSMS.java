@@ -1,11 +1,15 @@
 package com.visionpointsystems.appianplugins.twilioutils;
 	
-	import com.twilio.sdk.TwilioRestClient;
-	import com.twilio.sdk.TwilioRestException;
-	import com.twilio.sdk.resource.factory.SmsFactory;
-	import com.twilio.sdk.resource.instance.Sms;
-	import java.util.HashMap;
-	import java.util.Map;
+import com.twilio.sdk.TwilioRestClient;
+import com.twilio.sdk.TwilioRestException;
+import com.twilio.sdk.resource.factory.MessageFactory;
+import com.twilio.sdk.resource.instance.Message;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 	  
 	public class TwilioSendSMS { 
 	  
@@ -13,17 +17,17 @@ package com.visionpointsystems.appianplugins.twilioutils;
 	    TwilioRestClient client = new TwilioRestClient(accountSID, authToken);
 	  
 	    // Build a filter for the SmsList
-	    Map<String, String> params = new HashMap<String, String>();
+	    List<NameValuePair> params = new ArrayList<NameValuePair>();
 	    
 	    for (int i = 0; i < to.length; i++) {
 	    	
 		      
-		    params.put("Body", body);
-		    params.put("To", to[i]);
-		    params.put("From", from);
+		    params.add(new BasicNameValuePair("Body", body));
+		    params.add(new BasicNameValuePair("To", to[i]));
+		    params.add(new BasicNameValuePair("From", from));
 		      
-		    SmsFactory messageFactory = client.getAccount().getSmsFactory();
-		    Sms message = messageFactory.create(params);
+		    MessageFactory messageFactory = client.getAccount().getMessageFactory();
+		    Message message = messageFactory.create(params);
 		    System.out.println(message.getSid());
 		    
 	    }

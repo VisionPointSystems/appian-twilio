@@ -3,11 +3,17 @@
   <plugin-info>
     <description>Twilio Utilities</description>
     <vendor name="Vision Point Systems" url="http://ses.visionpointsystems.com" />
-    <version>1.0.1</version>
+    <version>1.1</version>
     <application-version min="6.1.0" />
   </plugin-info>
 
 
   <smart-service name="Send SMS via Twilio" key="SendSMS"
     class="com.visionpointsystems.appianplugins.twilioutils.SendSMS" />
+
+  <smart-service name="MakePhoneCall" key="MakePhoneCall"
+    class="com.visionpointsystems.appianplugins.twilioutils.MakePhoneCall" />
+
+  <smart-service name="Get Call Data" key="GetCallData"
+    class="com.visionpointsystems.appianplugins.twilioutils.GetCallDetails" />
 </appian-plugin>

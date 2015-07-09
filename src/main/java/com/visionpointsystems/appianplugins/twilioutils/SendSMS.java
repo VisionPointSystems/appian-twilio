@@ -25,11 +25,12 @@ public class SendSMS extends AppianSmartService {
 	private String body;
 	private String[] to;
 	private String from;
+	private String[] messageSids;
 
 	@Override
 	public void run() throws SmartServiceException {
 		try {
-			TwilioSendSMS.send(to, from, body, accountSID, authToken);
+			messageSids = TwilioSendSMS.send(to, from, body, accountSID, authToken);
 		} catch (TwilioRestException e) {
 			
 			e.printStackTrace();
@@ -76,6 +77,11 @@ public class SendSMS extends AppianSmartService {
 	@Name("from")
 	public void setFrom(String val) {
 		this.from = val;
+	}
+	
+	@Name("messageSids")
+	public String[] getMessageSids() {
+		return this.messageSids;
 	}
 
 }

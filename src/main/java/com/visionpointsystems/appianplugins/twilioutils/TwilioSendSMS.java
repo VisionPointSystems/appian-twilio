@@ -13,11 +13,12 @@ import org.apache.http.message.BasicNameValuePair;
 	  
 	public class TwilioSendSMS { 
 	  
-	  public static void send(String[] to, String from, String body, String accountSID, String authToken) throws TwilioRestException {
+	  public static String[] send(String[] to, String from, String body, String accountSID, String authToken) throws TwilioRestException {
 	    TwilioRestClient client = new TwilioRestClient(accountSID, authToken);
 	  
 	    // Build a filter for the SmsList
 	    List<NameValuePair> params = new ArrayList<NameValuePair>();
+	    String[] messageSids = new String[to.length];
 	    
 	    for (int i = 0; i < to.length; i++) {
 	    	
@@ -28,9 +29,10 @@ import org.apache.http.message.BasicNameValuePair;
 		      
 		    MessageFactory messageFactory = client.getAccount().getMessageFactory();
 		    Message message = messageFactory.create(params);
-		    System.out.println(message.getSid());
+		    messageSids[i] = message.getSid();
 		    
 	    }
+	    return messageSids;
 	  }
 	}
 

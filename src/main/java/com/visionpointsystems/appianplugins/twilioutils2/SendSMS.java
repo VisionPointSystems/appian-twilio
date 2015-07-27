@@ -1,7 +1,11 @@
-package com.visionpointsystems.appianplugins.twilioutils;
+package com.visionpointsystems.appianplugins.twilioutils2;
+
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.appiancorp.exceptions.InsufficientPrivilegesException;
+import com.appiancorp.exceptions.ObjectNotFoundException;
 import com.appiancorp.suiteapi.common.Name;
 import com.appiancorp.suiteapi.process.exceptions.SmartServiceException;
 import com.appiancorp.suiteapi.process.framework.AppianSmartService;
@@ -12,6 +16,7 @@ import com.appiancorp.suiteapi.process.framework.SmartServiceContext;
 import com.appiancorp.suiteapi.process.framework.Unattended;
 
 import com.appiancorp.suiteapi.process.palette.PaletteInfo; 
+import com.appiancorp.suiteapi.security.external.SecureCredentialsStore;
 import com.twilio.sdk.TwilioRestException;
 
 @PaletteInfo(paletteCategory = "Integration Services", palette = "Connectivity Services") 
@@ -20,7 +25,9 @@ public class SendSMS extends AppianSmartService {
 
 	private static final Logger LOG = Logger.getLogger(SendSMS.class);
 	private final SmartServiceContext smartServiceCtx;
+	private final SecureCredentialsStore scs;
 	private String accountSID;
+	private String authTokenScsKey;
 	private String authToken;
 	private String body;
 	private String[] to;
@@ -30,6 +37,17 @@ public class SendSMS extends AppianSmartService {
 	@Override
 	public void run() throws SmartServiceException {
 		try {
+			Map<String, String> credentials = scs.getSystemSecuredValues(authTokenScsKey);
+			authToken = credentials.get("authtoken");
+		} catch (InsufficientPrivilegesException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ObjectNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
 			messageSids = TwilioSendSMS.send(to, from, body, accountSID, authToken);
 		} catch (TwilioRestException e) {
 			
@@ -38,9 +56,10 @@ public class SendSMS extends AppianSmartService {
 
 	}
 
-	public SendSMS(SmartServiceContext smartServiceCtx) {
+	public SendSMS(SmartServiceContext smartServiceCtx, SecureCredentialsStore scs) {
 		super();
 		this.smartServiceCtx = smartServiceCtx;
+		this.scs = scs;
 	}
 
 	public void onSave(MessageContainer messages) {
@@ -56,9 +75,9 @@ public class SendSMS extends AppianSmartService {
 	}
 
 	@Input(required = Required.ALWAYS)
-	@Name("authToken")
-	public void setAuthToken(String val) {
-		this.authToken = val;
+	@Name("authTokenScsKey")
+	public void setAuthTokenScsKey(String val) {
+		this.authTokenScsKey = val;
 	}
 
 	@Input(required = Required.ALWAYS)

@@ -1,19 +1,19 @@
-<appian-plugin name="Twilio Utilities" key="com.visionpointsystems.appianplugins.twilioutils">
+<appian-plugin name="Twilio Utilities 2.0" key="com.visionpointsystems.appianplugins.twilioutils2">
 
   <plugin-info>
     <description>Twilio Utilities</description>
     <vendor name="Vision Point Systems" url="http://ses.visionpointsystems.com" />
-    <version>1.1</version>
-    <application-version min="6.1.0" />
+    <version>2.0</version>
+    <application-version min="7.4.0" />
   </plugin-info>
 
 
   <smart-service name="Send SMS via Twilio" key="SendSMS"
-    class="com.visionpointsystems.appianplugins.twilioutils.SendSMS" />
+    class="com.visionpointsystems.appianplugins.twilioutils2.SendSMS" />
 
-  <smart-service name="MakePhoneCall" key="MakePhoneCall"
-    class="com.visionpointsystems.appianplugins.twilioutils.MakePhoneCall" />
+  <smart-service name="Make Phone Call via Twilio" key="MakePhoneCall"
+    class="com.visionpointsystems.appianplugins.twilioutils2.MakePhoneCall" />
 
-  <smart-service name="Get Call Data" key="GetCallData"
-    class="com.visionpointsystems.appianplugins.twilioutils.GetCallDetails" />
+  <smart-service name="Get Twilio Call Data" key="GetCallData"
+    class="com.visionpointsystems.appianplugins.twilioutils2.GetCallDetails" />
 </appian-plugin>

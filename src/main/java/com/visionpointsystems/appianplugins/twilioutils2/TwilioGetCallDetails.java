@@ -34,7 +34,7 @@ import java.util.Date;
 	        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z"); //RFC 2822
 	        Date parsedDate = dateFormat.parse(call.getEndTime());
 	        Timestamp endTimestamp = new java.sql.Timestamp(parsedDate.getTime());
-	        callDetails.setStartTime(endTimestamp);
+	        callDetails.setEndTime(endTimestamp);
 	    }catch(Exception e){
 	    	e.printStackTrace();
 	    }

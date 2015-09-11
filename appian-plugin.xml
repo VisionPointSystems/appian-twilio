@@ -8,7 +8,7 @@
   </plugin-info>
 
 
-  <smart-service name="Send SMS via Twilio" key="SendSMS"
+  <smart-service name="Send SMS via Twilio" key="SendSMS2"
     class="com.visionpointsystems.appianplugins.twilioutils2.SendSMS" />
 
   <smart-service name="Make Phone Call via Twilio" key="MakePhoneCall"

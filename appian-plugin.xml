@@ -3,7 +3,7 @@
   <plugin-info>
     <description>Twilio Utilities</description>
     <vendor name="Vision Point Systems" url="http://ses.visionpointsystems.com" />
-    <version>2.0</version>
+    <version>2.1.0</version>
     <application-version min="7.4.0" />
   </plugin-info>
 
@@ -16,4 +16,13 @@
 
   <smart-service name="Get Twilio Call Data" key="GetCallData"
     class="com.visionpointsystems.appianplugins.twilioutils2.GetCallDetails" />
+
+  <smart-service name="Create TaskRouter Worker" key="CreateTaskRouterWorker"
+    class="com.visionpointsystems.appianplugins.twilioutils2.CreateTaskRouterWorker" />
+
+  <smart-service name="Delete TaskRouter Worker" key="DeleteTaskRouterWorker"
+    class="com.visionpointsystems.appianplugins.twilioutils2.DeleteTaskRouterWorker" />
+
+  <smart-service name="Update Worker Activity" key="UpdateWorkerActivity"
+    class="com.visionpointsystems.appianplugins.twilioutils2.UpdateWorkerActivity" />
 </appian-plugin>
